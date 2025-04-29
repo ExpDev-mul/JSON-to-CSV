@@ -1,3 +1,8 @@
+# Ignore all .csv and .json files
 *.csv
 *.json
+
+# Ensure previously tracked .csv and .json files are removed
+!.gitignore
+
 # Igonre our test files
