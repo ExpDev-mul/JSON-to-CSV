@@ -27,6 +27,7 @@ The tool uses a recursive DFS algorithm to iterate through each nested JSON bloc
 - 📦 **Array Handling**: Preserves arrays as single key-value pairs in the CSV.
 - ⚙️ **Customizable Separator**: Allows customization of the separator used for nested keys.
 - 🚨 **Error Handling**: Provides meaningful error messages for invalid or empty JSON files.
+- 🆘 **About Command**: Displays information about the tool and its usage.
 
 ---
 
@@ -59,13 +60,21 @@ The tool uses a recursive DFS algorithm to iterate through each nested JSON bloc
 ### ▶️ Running the Tool
 To convert a JSON file to a CSV file, run:
 ```bash
-python main.py <input_json_path> <output_csv_path>
+python main.py convert <input_json_path> <output_csv_path>
 ```
 
 #### Example:
 ```bash
-python main.py src.json output.csv
+python main.py convert src.json output.csv
 ```
+
+### ℹ️ About Command
+To display information about the tool, run:
+```bash
+python main.py about
+```
+
+This will print a brief description of the tool and its usage.
 
 ---
 
