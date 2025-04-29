@@ -2,13 +2,13 @@
 
 ## 👨‍💻 Author: Or Pinto
 
-This project provides a CLI tool for converting nested JSON structures into a flat and readable CSV format. The tool employs a recursive Depth-First Search (DFS) approach to flatten nested JSON objects into a single-level dictionary, ensuring that the hierarchical structure is preserved in the keys.
+This project provides a CLI tool for converting nested JSON structures into a flat and readable CSV format. The tool is designed to handle JSON data files mimicking MongoDB collections and convert them into SQL-like tabular data. It addresses challenges such as schema handling, nested data, and array fields.
 
 ---
 
 ## ❓ Problem Statement
 
-Dealing with nested JSON structures can be a real headache, especially when trying to analyze or process the data in tabular formats like CSV. Nested JSONs often contain dictionaries and arrays, making it tricky to represent them in a flat structure. This tool swoops in to save the day 🦸‍♂️ by flattening the JSON into a format that's super easy to work with in tools like Excel or data analysis libraries.
+Dealing with nested JSON structures can be a real headache, especially when trying to analyze or process the data in tabular formats like CSV. Nested JSONs often contain dictionaries and arrays, making it tricky to represent them in a flat structure. This tool solves these challenges by flattening the JSON into a format that's easy to work with in tools like Excel or SQL databases.
 
 ---
 
@@ -19,6 +19,12 @@ The tool uses a recursive DFS algorithm to iterate through each nested JSON bloc
 2. **📋 Handling Arrays**: Arrays are stored as JSON-like strings in the CSV, ensuring that they remain compact and readable.
 3. **✅ Primitive Values**: Non-nestable values (e.g., strings, numbers) are directly added to the flattened structure.
 
+### Design Decisions
+- **Schema Handling**: The tool dynamically generates a schema by analyzing the keys in the JSON data. This ensures compatibility with schema-less NoSQL data.
+- **Nested Data**: Nested objects are flattened using a customizable separator to maintain hierarchy in the keys.
+- **Data Types**: The tool assumes consistent data types for each key. If inconsistencies are detected, they are logged for review.
+- **Array Fields**: Arrays are converted into JSON-like strings to preserve their structure in a single column.
+
 ---
 
 ## ✨ Features
@@ -28,6 +34,7 @@ The tool uses a recursive DFS algorithm to iterate through each nested JSON bloc
 - ⚙️ **Customizable Separator**: Allows customization of the separator used for nested keys.
 - 🚨 **Error Handling**: Provides meaningful error messages for invalid or empty JSON files.
 - 🆘 **About Command**: Displays information about the tool and its usage.
+- 🧪 **Unit Tests**: Includes tests for the data transformation logic.
 
 ---
 
@@ -36,6 +43,7 @@ The tool uses a recursive DFS algorithm to iterate through each nested JSON bloc
 ### 🛠️ Prerequisites
 - 🐍 Python 3.x
 - 📦 `typer` library (for CLI functionality)
+- 🧪 `pytest` (for testing)
 
 ### 📥 Installation
 1. Clone the repository:
@@ -44,18 +52,16 @@ The tool uses a recursive DFS algorithm to iterate through each nested JSON bloc
    cd <repository-folder>
    ```
 
-2. Ensure you have Python 3.x installed. Then, create and activate a virtual environment (optional but recommended):
+2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. Install dependencies using `requirements.txt`:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-
-   This will install the `typer` library and any other required dependencies.
 
 ### ▶️ Running the Tool
 To convert a JSON file to a CSV file, run:
@@ -78,7 +84,16 @@ This will print a brief description of the tool and its usage.
 
 ---
 
-### 🐳 Running with Docker
+## 🧪 Unit Testing
+
+Unit tests are included to validate the data transformation logic. To run the tests, use:
+```bash
+pytest
+```
+
+---
+
+## 🐳 Docker Support
 
 1. Build the Docker image:
    ```bash
@@ -93,3 +108,48 @@ This will print a brief description of the tool and its usage.
    Replace `<input_json_path>` with the path to your JSON file and `<output_csv_path>` with the desired path for the CSV file.
 
 ---
+
+## 🛠️ Development Environment
+
+This project uses a virtual environment for dependency management. A `requirements.txt` file is provided for reproducible builds. To set up the environment:
+1. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+
+2. Activate the virtual environment:
+   ```bash
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## 📋 Challenges Addressed
+
+### Schema Handling
+The tool dynamically generates a schema by analyzing the keys in the JSON data, ensuring compatibility with schema-less NoSQL data.
+
+### Nested Data
+Nested objects are flattened using a customizable separator to maintain hierarchy in the keys.
+
+### Data Types
+The tool assumes consistent data types for each key. If inconsistencies are detected, they are logged for review.
+
+### Array Fields
+Arrays are converted into JSON-like strings to preserve their structure in a single column.
+
+---
+
+## 📦 Deliverables
+
+- Complete Python CLI application code
+- Unit tests
+- Sample JSON data files
+- A comprehensive README.md
+- Dockerfile
+- `requirements.txt` for dependencies
