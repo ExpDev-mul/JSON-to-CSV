@@ -88,8 +88,10 @@ This will print a brief description of the tool and its usage.
 
 Unit tests are included to validate the data transformation logic. To run the tests, use:
 ```bash
-pytest
+pytest test_main.py
 ```
+
+This will execute all the test cases defined in the `test_main.py` file to ensure the correctness of the data transformation logic.
 
 ---
 
