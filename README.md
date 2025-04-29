@@ -8,7 +8,7 @@ This project provides a CLI tool for converting nested JSON structures into a fl
 
 ## ❓ Problem Statement
 
-Dealing with nested JSON structures can be a real headache 😩, especially when trying to analyze or process the data in tabular formats like CSV. Nested JSONs often contain dictionaries and arrays, making it tricky to represent them in a flat structure. This tool swoops in to save the day 🦸‍♂️ by flattening the JSON into a format that's super easy to work with in tools like Excel or data analysis libraries.
+Dealing with nested JSON structures can be a real headache, especially when trying to analyze or process the data in tabular formats like CSV. Nested JSONs often contain dictionaries and arrays, making it tricky to represent them in a flat structure. This tool swoops in to save the day 🦸‍♂️ by flattening the JSON into a format that's super easy to work with in tools like Excel or data analysis libraries.
 
 ---
 
@@ -43,10 +43,18 @@ The tool uses a recursive DFS algorithm to iterate through each nested JSON bloc
    cd <repository-folder>
    ```
 
-2. Install dependencies:
+2. Ensure you have Python 3.x installed. Then, create and activate a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies using `requirements.txt`:
    ```bash
    pip install -r requirements.txt
    ```
+
+   This will install the `typer` library and any other required dependencies.
 
 ### ▶️ Running the Tool
 To convert a JSON file to a CSV file, run:
