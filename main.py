@@ -62,19 +62,16 @@ def write_json_to_csv(json_data: dict, csv_file_path: str) -> None:
 app = typer.Typer(help="A CLI tool to convert JSON files to CSV format.") # Init our app.
 
 @app.command()
-def convert(input_json: str, output_csv: str) -> None:
+def convert() -> None:
     '''
-    Converts a JSON file to a CSV file.
-    
-    Args:
-        input_json (str): Path to the input JSON file.
-        output_csv (str): Path to the output CSV file.
-
-    Raises:
-        FileNotFoundError: If the input JSON file does not exist.
-        ValueError: If the JSON file is invalid or not a dictionary.
+    Converts a JSON file to a CSV file by prompting the user for file paths.
     '''
     try:
+        # Prompt the user for the input JSON file path.
+        input_json = input("Enter the path to the input JSON file: ").strip()
+        # Prompt the user for the output CSV file path.
+        output_csv = input("Enter the path to the output CSV file: ").strip()
+
         # Step 1: Read and parse the JSON file.
         with open(input_json, 'r') as json_file:
             data = json.load(json_file)
