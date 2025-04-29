@@ -59,7 +59,10 @@ def write_json_to_csv(json_data: dict, csv_file_path: str) -> None:
     except Exception as e:
         raise Exception(f"Unexpected error during CSV writing: {e}")
 
-def main(input_json: str, output_csv: str) -> None:
+app = typer.Typer(help="A CLI tool to convert JSON files to CSV format.") # Init our app.
+
+@app.command()
+def convert(input_json: str, output_csv: str) -> None:
     '''
     Converts a JSON file to a CSV file.
     
@@ -94,5 +97,15 @@ def main(input_json: str, output_csv: str) -> None:
     except Exception as e:
         print(f"Unexpected error: {e}")
 
+# Define about command.
+@app.command() 
+def about() -> None:
+    '''
+    Displays an about message for the tool.
+    '''
+    print("Welcome to the JSON-to-CSV Converter!")
+    print("Use this tool to easily convert JSON files into CSV format.")
+    print("Run 'python main.py --help' for more information.")
+
 if __name__ == "__main__":
-    typer.run(main)
+    app() # Run our CLI app.
